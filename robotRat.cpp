@@ -8,6 +8,10 @@
 *************************************/
 namespace robotRat {
    static bool floor[ROWS][COLS] = {};
+   static PenPosition pen_Position = UP;
+   static Direction rats_Direction = EAST;
+   static int current_Row = 0;
+   static int current_Col = 0;
 }
 /************************************/
 void displayMenu() {
@@ -20,19 +24,77 @@ void displayMenu() {
    cout << " 7. Exit\n"; 
 }
 void setPenUp() {
-   cout << "The pen is up!\n";
+   robotRat :: pen_Position = UP;
 }
 void setPenDown() {
-   cout << "The pen is down!\n";
+   robotRat :: pen_Position = DOWN;
 }
 void turnRight() {
-   cout << "Robot Rat turned right!\n";
+   switch(robotRat :: rats_Direction) {   
+   case NORTH:robotRat :: rats_Direction = EAST;
+              break;
+   case EAST: robotRat :: rats_Direction = SOUTH; 
+              break;
+   case WEST: robotRat :: rats_Direction = WEST;
+              break;
+   case SOUTH: robotRat :: rats_Direction = NORTH;
+              break;
+   default:    robotRat :: rats_Direction = EAST;
+   }
 }
 void turnLeft() {
-   cout << "Robot rat turned left!\n";
+switch(robotRat :: rats_Direction) {
+   case NORTH:robotRat :: rats_Direction = WEST;
+              cout << "Facing West\n";
+              break;
+   case EAST: robotRat :: rats_Direction = NORTH; 
+              cout << "Facing North\n";
+              break;
+   case WEST: robotRat :: rats_Direction = EAST;
+              cout << "Facing East\n";
+              break;
+   case SOUTH:robotRat :: rats_Direction = SOUTH;
+              cout << "Facing South\n";
+              break;
+   default:   robotRat :: rats_Direction = EAST;
+              cout << "Facing East\n";                   
+}
 }
 void move() {
-   cout<< "Robot Rat moved!\n";
+   int spaces = 0;
+   cout << "How many spaces?:\n";
+   cin >> spaces;
+   
+   switch(robotRat :: pen_Position) {
+   case UP: switch(robotRat :: rats_Direction) {
+      case NORTH: if(robotRat :: current_Row - spaces) {
+                     robotRat :: current_Row -= spaces;
+                     } else {
+                     robotRat :: current_Row = 0;
+                     }
+                     break;
+      case SOUTH: if((robotRat :: current_Row + spaces) < ROWS) {
+                     robotRat :: current_Row += spaces;
+                     } else {
+                     robotRat :: current_Row = ROWS - 1;
+                     }
+                     break;
+      case EAST: if((robotRat :: current_Row + spaces) < COLS) {
+                     robotRat :: current_Row += spaces;
+                     } else {
+                     robotRat :: current_Col = COLS - 1;
+                     }
+                     break;
+      case WEST: if(robotRat :: current_Row - spaces) {
+                     robotRat :: current_Row -= spaces;
+                     } else {
+                     robotRat :: current_Col = 0;
+                     }
+                     break;
+      default : ;
+      }
+      break;
+   }
 }
 void printFloor() {
    

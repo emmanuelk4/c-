@@ -4,6 +4,9 @@
 const int ROWS = 20;
 const int COLS = 20;
 
+enum Direction {NORTH, SOUTH, WEST, EAST};
+enum PenPosition {UP, DOWN};
+
 void displayMenu();
 void processMenuChoice();
 void setPenUp();
