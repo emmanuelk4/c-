@@ -1,6 +1,15 @@
 #include <C:\Users\Admin\Desktop\c++\robotRat.h>
 #include <iostream>
+#include <stdlib.h>
 
+/*************************************
+   FILE SCOPE VARIABLE DECLARATIONS
+   
+*************************************/
+namespace robotRat {
+   static bool floor[ROWS][COLS] = {};
+}
+/************************************/
 void displayMenu() {
    cout << " 1. Pen Up\n";
    cout << " 2. Pen down\n";
@@ -26,7 +35,16 @@ void move() {
    cout<< "Robot Rat moved!\n";
 }
 void printFloor() {
-   cout << "Floor printed!\n";
+   for(int i = 0; i < ROWS; i++) {
+      for(int j = 0; j < COLS; j++) {
+         if(robotRat :: floor[i][j]) {
+            cout << "[-]";
+            } else {
+               cout << "[ ]";
+            }            
+      }
+      cout<< "\n";
+   }
 }
 void programExit() {
    exit(0);

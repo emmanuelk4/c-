@@ -1,6 +1,9 @@
 #ifndef ROBOT_RAT_H
 #define ROBOT_RAT_H
 
+const int ROWS = 20;
+const int COLS = 20;
+
 void displayMenu();
 void processMenuChoice();
 void setPenUp();
