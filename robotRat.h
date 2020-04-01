@@ -15,4 +15,6 @@ void printFloor();
 void programExit();
 void doDefault();
 
+void setTestPattern();
+
 #endif
