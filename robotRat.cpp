@@ -35,6 +35,9 @@ void move() {
    cout<< "Robot Rat moved!\n";
 }
 void printFloor() {
+   
+   setTestPattern();
+   
    for(int i = 0; i < ROWS; i++) {
       for(int j = 0; j < COLS; j++) {
          if(robotRat :: floor[i][j]) {
@@ -52,6 +55,19 @@ void programExit() {
 void doDefault() {
    cout << "Please enter a valid menu choice!\n";
 }
+
+void setTestPattern() {
+   robotRat :: floor[0][0] = true;
+   robotRat :: floor[0][1] = true;
+   robotRat :: floor[0][2] = true;
+   robotRat :: floor[0][3] = true;
+   robotRat :: floor[1][3] = true;
+   robotRat :: floor[2][3] = true;
+   robotRat :: floor[3][3] = true;
+   robotRat :: floor[4][3] = true;
+   robotRat :: floor[5][3] = true;
+}
+
 void processMenuChoice() {
    char input;
    cout << "Please Enter menu choice: ";
