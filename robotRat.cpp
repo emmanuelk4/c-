@@ -65,7 +65,7 @@ void move() {
    cout << "How many spaces?:\n";
    cin >> spaces;
    
-   switch(robotRat :: pen_Position) {
+   switch(robotRat :: pen_Position) {  
    case UP: switch(robotRat :: rats_Direction) {
       case NORTH: if(robotRat :: current_Row - spaces) {
                      robotRat :: current_Row -= spaces;
